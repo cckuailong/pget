@@ -12,26 +12,51 @@ A pkg from Pget
 ### go get
 Install
 
-    $ 
+    $ go get github.com/cckuailong/pget
 
 Update
 
-    $ 
+    $ go get -u github.com/cckuailong/pget
 
-## Options
+## Func
+
+Run(url,targetDir, output, procs, timeout, userAgent, referer, quiet)
+```
+  Params:   
+  Name:     Type:       Note:
+  url       [string]    url to download
+  targetDir [string]    path to the directory to save the downloaded file, filename will be taken from url
+  output    [string]    output file name
+  procs     [int]       split ratio to download file
+  timeout   [int]       timeout of checking request in seconds
+  userAgent [string]    identify as <userAgent>
+  referer   [string]    identify as <referer>
+  quiet     [bool]      work on a silent model
+```
+
+## Example
 
 ```
-  Options:
-  -h,  --help                   print usage and exit
-  -v,  --version                display the version of pget and exit
-  -p,  --procs <num>            split ratio to download file
-  -o,  --output <filename>      output file to <filename>
-  -d,  --target-dir <path>      path to the directory to save the downloaded file, filename will be taken from url
-  -t,  --timeout <seconds>      timeout of checking request in seconds
-  -u,  --user-agent <agent>     identify as <agent>
-  -r,  --referer <referer>      identify as <referer>
-  --check-update                check if there is update available
-  --trace                       display detail error messages
+package main
+
+import (
+	"fmt"
+	"os"
+	"github.com/cckuailong/pget"
+)
+
+func main() {
+	url := "http://data.ris.ripe.net/rrc14/2019.10/bview.20191031.1600.gz"
+	targetDir := "result/"
+	output := "test1.gz"
+	cli := pget.New()
+	if err := cli.Run(url,targetDir, output, 10, 10, "","", true); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	os.Exit(0)
+}
 ```
 
 ## Pget vs Wget

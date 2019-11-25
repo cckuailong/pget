@@ -1,4 +1,4 @@
-module pget
+module github.com/cckuailong/pget
 
 go 1.13
 

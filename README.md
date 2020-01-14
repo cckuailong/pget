@@ -1,5 +1,6 @@
-Pget - parallel file download pkg
-=======
+# Pget - parallel file download pkg
+
+[![Build Status](https://travis-ci.com/cckuailong/pget.svg?branch=master)](https://travis-ci.com/cckuailong/pget)
 
 ## Description
 
